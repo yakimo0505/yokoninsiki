@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>横認識トレーナー</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hud">
+        <div class="brand">横認識トレーナー</div>
+
+        <label class="inline-control">
+          <span>レーン数</span>
+          <select id="laneCountSelect">
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </label>
+
+        <label class="inline-control">
+          <span>パターン</span>
+          <select id="patternModeSelect">
+            <option value="pair">2個同時押し</option>
+            <option value="triple">3個同時押し</option>
+            <option value="quad">4個同時押し</option>
+            <option value="penta">5個同時押し</option>
+            <option value="hexa">6個同時押し</option>
+            <option value="septa">7個同時押し</option>
+            <option value="random-2-3">2〜3ランダム</option>
+            <option value="random-2-4">2〜4ランダム</option>
+            <option value="random-3-4">3〜4ランダム</option>
+            <option value="random-4-5">4〜5ランダム</option>
+          </select>
+        </label>
+
+        <label class="inline-control">
+          <span>モード</span>
+          <select id="modeSelect">
+            <option value="normal">通常</option>
+            <option value="score-attack">スコアアタック</option>
+          </select>
+        </label>
+
+        <div class="stat-box">
+          <span>スコア</span>
+          <strong id="score">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>コンボ</span>
+          <strong id="combo">0</strong>
+        </div>
+        <div class="stat-box">
+          <span>最高</span>
+          <strong id="maxCombo">0</strong>
+        </div>
+      </header>
+
+      <main class="game-panel">
+        <section class="play-area">
+          <div class="pattern-header">
+            <div>
+              <div class="label">現在のパターン</div>
+              <div id="patternSummary" class="pattern-summary">待機中</div>
+            </div>
+            <div class="status-box">
+              <div class="label">状態</div>
+              <div id="statusText">スタートで開始</div>
+            </div>
+          </div>
+
+          <div id="patternBoard" class="pattern-board" aria-live="polite"></div>
+
+          <div class="controls">
+            <button id="startButton" class="primary">開始</button>
+            <button id="resetButton" class="secondary">リセット</button>
+          </div>
+        </section>
+
+        <aside class="config-panel">
+          <div class="config-tabs">
+            <button id="gameViewButton" class="tab-button active">ゲーム</button>
+            <button id="configViewButton" class="tab-button">キー設定</button>
+          </div>
+
+          <div id="gameView" class="view-panel active">
+            <div class="config-title">キーコンフィグ</div>
+            <div id="keyConfig" class="key-config"></div>
+          </div>
+
+          <div id="configView" class="view-panel">
+            <div class="config-title">レーン数ごとの設定</div>
+            <div id="laneConfigList" class="lane-config-list"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
